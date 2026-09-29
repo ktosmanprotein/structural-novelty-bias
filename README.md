@@ -10,12 +10,15 @@ the text and the data surfaces as a build failure rather than as a silent error.
 ## Reproducing the paper
 
 ```
-python3 scripts/audit_numbers.py     # source tables -> numbers.json
-python3 scripts/build_ms.py          # manuscript .docx
+python3 audit_numbers.py     # source tables -> numbers.json
+python3 build_ms.py          # manuscript .docx
 ```
 
-`audit_numbers.py` must run first: it writes `numbers.json`, which every figure
-script and the manuscript builder read.
+`audit_numbers.py` must run first: it writes `numbers.json`, from which the
+manuscript builder and the figure code both read. Every value plotted in the
+figures, including the exact binomial confidence intervals in Fig 1B, is
+computed there rather than at plotting time; the rendering scripts only style
+what is already in `numbers.json`, so they are not included here.
 
 ## What each script does
 
@@ -23,11 +26,11 @@ script and the manuscript builder read.
 |---|---|
 | `audit_numbers.py` | Recomputes every reported value from the source tables into `numbers.json` |
 | `build_ms.py` | Builds the manuscript, pulling all numbers from `numbers.json` |
-| `render_p1_structures.command` | PyMOL renders: confidence gradient and superpositions |
 | `run_pdb100_crossspecies.command` | Panel-wide PDB100 correction, 8,011 structures |
 | `finish_pdb100_crossspecies.command` | Fast finisher for the above (batched organism lookup) |
 | `verify_pdb100_hits.command` | US-align confirmation of *P. falciparum* PDB100 candidates |
 | `run_afdb_darkcluster_reanalysis.command` | AFDB dark-cluster re-analysis, releases v3 and v6 |
+| `make_derived_tables.py` | Writes the per-protein tables the data deposit promises |
 | `prepare_upload_folders.command` | Assembles this repository and the Zenodo deposit |
 
 ## Data
