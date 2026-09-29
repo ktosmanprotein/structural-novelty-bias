@@ -1,0 +1,12 @@
+# large regenerable / re-downloadable inputs
+*.m8
+*.cif
+*.tsv.gz
+structures/
+cif/
+chains/
+queries/
+renders/*.pse
+__pycache__/
+*.pyc
+.DS_Store

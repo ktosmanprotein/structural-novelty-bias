@@ -1,0 +1,10 @@
+# Python 3.10 or later
+matplotlib==3.10.9
+numpy
+pillow
+python-docx
+# External tools (not pip-installable):
+#   Foldseek  8.ef4e960  (forward searches)
+#   Foldseek 10.941cd33  (PDB100 searches)
+#   US-align             (independent re-scoring)
+#   PyMOL                (structure renders)
